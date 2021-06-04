@@ -1,0 +1,535 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    width: 100%;
+    /* background-color: #222; */
+}
+
+.w-100 {
+    width: 100%;
+}
+
+
+[v-cloak] {
+    display: none;
+}
+
+
+.tomato_section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+/* 最右邊 */
+.left {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+    z-index: 10;
+    margin-top: -100px;
+}
+
+.left .time {
+    display: flex;
+    align-items: center;
+}
+
+.left .time p {
+    font-weight: bold;
+    color: #333;
+    letter-spacing: 1px;
+    margin-right: 10px;
+}
+
+.left .time .sound_icon {
+    position: relative;
+    width: 30px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.left .time .reset{
+    margin-left: 10px;
+}
+
+.left .time .sound_icon.no::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -80%) rotate(45deg);
+    background-color: #888;
+}
+
+.left .normal_music p {
+    font-weight: bolder;
+    letter-spacing: 1px;
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.left .info_section {
+    position: relative;
+    padding: 10px 10px;
+    width: 100%;
+    max-width: 120px;
+}
+
+.left .info_section .button_section {
+    position: relative;
+}
+
+.left .info_section .button_section .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.left .info_section .button_section .btn.no_select{
+    filter: grayscale(1) opacity(0.5);
+}
+
+.left .info_section .button_section .btn:hover {
+    opacity: 0.8;
+}
+
+.left .info_section .button_section .btn:nth-child(2) {
+    margin-top: 40px;
+}
+
+.left .info_section .button_section .btn p {
+    margin-top: 10px;
+}
+
+.left .info_section .button_section .tomato_btn {
+    width: 60px;
+}
+
+.left .info_section .button_section .music_btn {
+    width: 70px;
+}
+
+.left .info_modal {
+    position: absolute;
+    top: 0;
+    right: 0%;
+    transform: translate(100%, -10px);
+    padding: 20px 30px;
+    border-radius: 10px;
+    width: 400px;
+    min-height: 100%;
+    box-shadow: 2px 2px 3px rgba(131, 131, 131, 0.3);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    display: none;
+}
+
+.left .info_modal.toma{
+    display: flex;
+    background-color: #fff;
+    border: solid 2px #c6c6c6;
+}
+
+.left .info_modal.music{
+    display: block;
+    background-color: #F95C3D;
+}
+
+.left .info_modal::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 0 0 0 5px;
+    transform: rotate(45deg);
+}
+
+.left .info_modal.toma::before{
+    top: 20%;
+    background-color: #fff;
+    border-left: 2px solid #c6c6c6;
+    border-bottom: 2px solid #c6c6c6;
+    left: -18px;
+}
+
+.left .info_modal.music::before{
+    top: 60%;
+    background-color: #F95C3D;
+    left: -15px;
+}
+
+.left .info_modal .close {
+    position: absolute;
+    width: 25px;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+}
+
+.left .info_modal.music .close{
+    filter: brightness(5);
+}
+
+.left .info_modal .text_modal, .left .info_modal .music_modal{
+    display: none;
+}
+
+.left .info_modal.toma .text_modal{
+    display: block;
+}
+
+.text_modal h4 {
+    font-size: 20px;
+    color: #F95C3D;
+    margin-bottom: 5px;
+}
+
+.text_modal p {
+    line-height: 30px;
+    color: #555;
+}
+
+.left .info_modal.music .music_modal{
+    display: block;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.left .info_modal.music .music_modal.nonetime .main_btn{
+    pointer-events: none;
+    filter: grayscale(1) brightness(0.9);
+}
+
+
+.left .info_modal.music .music_modal p{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+
+.left .info_modal.music .main_btn{
+    border: none;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 100px;
+    margin: 5px 0;
+    padding: 8px 20px;
+    font-size: 18px;
+    box-shadow: 0px 2px 5px rgba(153, 153, 153, 0.356);
+    outline: none;
+}
+
+.left .info_modal .main_btn.no_select{
+    background-color: rgb(230, 230, 230);
+    color: #999;
+}
+
+.left .info_modal.music .music_modal.nonetime .main_btn{
+    color: #999;
+}
+
+.left .info_modal .main_btn.no_select img{
+    opacity: 0.5;
+}
+
+.left .info_modal.music .yt_btn{
+    display: flex;
+    align-items: center;
+    cursor: auto;
+}
+
+.left .info_modal.music .yt_btn .yt_img{
+    width: 40px;
+    margin: 0 10px;
+}
+
+.left .info_modal.music .yt_btn input{
+    width: 100%;
+    font-size: 12px;
+    padding: 10px 10px;
+    outline: none;
+    border-radius: 20px;
+    border: solid 1px #999;
+    background-color: rgb(247, 247, 247);
+}
+
+.left .close_music_btn{
+    background: transparent;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.left .close_music_btn:hover p{
+    opacity: 0.8;
+}
+
+.left .close_music_btn .close_music{
+    width: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+    filter: brightness(10);
+}
+
+
+/* 正中間主體 */
+.middle_section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -150px;
+    position: relative;
+    z-index: 1;
+}
+
+.middle_section .clock_img {
+    position: relative;
+    width: 180px;
+    animation: tomato_ani .5s  backwards;
+}
+
+@keyframes tomato_ani{
+    0%{
+        transform: scale(0);
+    }
+    75%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.middle_section .toggle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: solid 8px #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.middle_section .toggle .pause {
+    width: 55%;
+}
+
+.middle_section .toggle .play {
+    width: 80%;
+    margin-left: 10px;
+}
+
+.middle_section h2 {
+    font-family: 'Roboto', sans-serif;
+    color: transparent;
+    -webkit-text-stroke: 2.5px #F95C3D;
+    font-size: 55px;
+    margin-top: 5px;
+}
+
+.middle_section h1 {
+    font-family: 'Roboto', sans-serif;
+    color: #FFCEC4;
+    -webkit-text-stroke: 2.5px #F95C3D;
+    font-size: 230px;
+    letter-spacing: 10px;
+    font-weight: bolder;
+}
+
+.middle_section .progress_bar .bar {
+    position: relative;
+    max-width: 900px;
+    width: 80vw;
+    height: 15px;
+    background-color: #fff;
+    border: solid 1px #707070;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.middle_section .progress_bar .bar .progress {
+    height: 15px;
+    background-color: #F95C3D;
+    position: absolute;
+    left: 0;
+}
+
+.middle_section .progress_bar .tip_text {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-weight: bolder;
+}
+
+.middle_section .progress_bar .gogo_text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: normal;
+    width: 100%;
+    text-align: center;
+}
+
+
+/* 最底部 */
+.bottom_section {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 250px;
+    overflow: hidden;
+}
+
+
+
+/* 初始進入畫面 */
+.start_part{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #F95C3D;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.start_part .sound_bigimg{
+    width: 90px;
+    margin-bottom: 10px;
+}
+
+.start_part .intro_text{
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.start_part .intro_text h2{
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 40px;
+}
+
+.start_part .button_section .main_btn{
+    width: 100%;
+    min-width: 250px;
+    background-color: #fff;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin: 10px 0;
+    font-size: 18px;
+    box-shadow: 0px 2px 5px rgba(67, 67, 67, 0.3);
+    cursor: pointer;
+}
+
+.start_part .button_section .main_btn:hover{
+    background-color: rgb(240, 240, 240);
+}
+
+.start_part .button_section .yt_btn:hover{
+    background-color: #fff;
+}
+
+.start_part .button_section .yt_btn{
+    display: flex;
+    align-items: center;
+    cursor: auto;
+}
+
+.start_part .button_section .yt_btn p{
+    margin-right: 10px;
+}
+
+.start_part .button_section .yt_btn input{
+    width: 100%;
+    padding: 10px 5px;
+    border-radius: 20px;
+    font-size: 14px;
+    border: solid 1px #999;
+    background-color: rgb(238, 238, 238);
+    outline: none;
+}
+
+.start_part .button_section .yt_btn .go{
+    width: 30px;
+    margin-left: 20px;
+    cursor: pointer;
+    filter: grayscale(1);
+    padding-top: 5px;
+}
+
+.start_part .button_section .yt_btn .go:hover{
+    filter: grayscale(1) opacity(0.7);
+}
+
+.start_part .close_music_btn{
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.start_part .close_music_btn:hover{
+    opacity: 0.8;
+}
+
+.start_part .close_music{
+    width: 20px;
+    margin-right: 10px;
+    filter: brightness(10);
+}
+
+
+
+/* transition */
+
+.start-enter-active, .start-leave-active {
+  transition: transform .5s;
+}
+.start-enter, .start-leave-to{
+    transform: translateY(-120%);
+
+}

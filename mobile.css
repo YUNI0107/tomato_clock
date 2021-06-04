@@ -1,0 +1,307 @@
+@media(max-width: 992px) {
+
+    /* 初始畫面 */
+    .start_part {
+        padding: 0 20px;
+        width: calc(100% - 40px);
+    }
+
+    .start_part p {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .start_part .sound_bigimg {
+        width: 60px;
+    }
+
+    .start_part .intro_text h2 {
+        font-size: 30px;
+    }
+
+    .start_part .button_section .main_btn {
+        margin: 10px 0;
+        font-size: 15px;
+    }
+
+
+    /* 進入畫面 */
+    .tomato_section {
+        flex-direction: column;
+        padding: 0 15px;
+        min-height: 90vh;
+    }
+
+    .mobile_yt {
+        width: calc(100% + 30px);
+        margin-left: -15px;
+        height: 15vh;
+        min-height: 100px;
+        display: block;
+        overflow: hidden;
+    }
+
+
+    /* 時間畫面 */
+    .middle_section {
+        order: 2;
+        flex: 3;
+        margin-top: 0;
+        padding: 20px 0;
+    }
+
+    .middle_section .clock_img {
+        max-width: 120px;
+        width: 60vw;
+    }
+
+    .middle_section .toggle {
+        max-width: 30px;
+        max-height: 30px;
+        width: 30vw;
+        height: 30vw;
+    }
+
+    .middle_section h2 {
+        font-size: 45px;
+        -webkit-text-stroke: 2px #F95C3D;
+    }
+
+    .middle_section h1 {
+        font-size: 90px;
+        letter-spacing: 5px;
+        -webkit-text-stroke: 2px #F95C3D;
+    }
+
+    .middle_section .progress_bar {
+        margin-top: 10px;
+    }
+
+    .left .info_section .button_section .btn:nth-child(2) {
+        margin-top: 0px;
+    }
+
+
+    /* 資訊畫面 */
+    .left {
+        order: 3;
+        flex: 2;
+        position: relative;
+        margin-top: 0;
+        top: auto;
+        left: auto;
+        transform: none;
+    }
+
+    .left .time {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .left .normal_music p {
+        text-align: center;
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 0px;
+        margin-top: 5px;
+    }
+
+    .left .info_section {
+        padding: 0;
+        width: 100%;
+        max-width: none;
+    }
+
+    .left .info_section .button_section {
+        display: flex;
+        justify-content: space-between;
+        max-width: 300px;
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+
+    .left .info_section .button_section .btn {
+        margin: 0 20px;
+        flex: 1;
+    }
+
+    .left .info_section .button_section .tomato_btn {
+        width: 60px;
+    }
+
+    .left .info_section .button_section .music_btn {
+        width: 60px;
+    }
+
+    .left .info_modal {
+        top: -30px;
+        right: 50%;
+        transform: translate(50%, -100%);
+        padding: 20px 30px;
+        width: 70vw;
+        max-width: 400px;
+        min-height: 100%;
+    }
+
+    .left .info_modal::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        border-radius: 0 0 0 5px;
+        transform: rotate(-45deg);
+    }
+
+    .left .info_modal.toma::before {
+        top: calc(100% - 12px);
+        background-color: #fff;
+        border-left: 2px solid #c6c6c6;
+        border-bottom: 2px solid #c6c6c6;
+        left: calc(50% - 50px);
+    }
+
+    .left .info_modal.music::before {
+        top: calc(100% - 12px);
+        background-color: #F95C3D;
+        left: calc(50% + 50px);
+    }
+
+    .left .info_modal .close {
+        width: 20px;
+        right: 15px;
+        top: 15px;
+    }
+
+    .text_modal h4 {
+        font-size: 18px;
+    }
+
+    .text_modal p {
+        font-size: 14px;
+        line-height: 25px;
+        color: #555;
+    }
+
+    .left .info_modal.music .music_modal p {
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .left .info_modal.music .main_btn {
+        margin: 5px 0;
+        padding: 4px 10px;
+        font-size: 15px;
+    }
+
+    .left .info_modal.music .yt_btn .yt_img {
+        width: 30px;
+        margin: 0 5px;
+    }
+
+    .left .close_music_btn .close_music {
+        margin-top: 5px;
+        filter: brightness(10);
+    }
+
+}
+
+
+@media(max-width: 576px) {
+    .tomato_section {
+        height: auto;
+        min-height: calc(100vh - 150px);
+    }
+
+    .middle_section h2 {
+        font-size: 30px;
+    }
+
+    .middle_section .clock_img {
+        max-width: 100px;
+    }
+
+    .middle_section .toggle {
+        max-width: 20px;
+        max-height: 20px;
+    }
+
+    .middle_section .toggle .play {
+        margin-left: 2px;
+    }
+
+    .middle_section h2 {
+        font-size: 30px;
+    }
+
+    .middle_section h1 {
+        font-size: 80px;
+    }
+
+    .middle_section .progress_bar .bar {
+        height: 10px;
+    }
+
+    .middle_section .progress_bar .bar .progress {
+        height: 10px;
+    }
+
+    .middle_section .progress_bar .tip_text {
+        margin-top: 5px;
+        font-size: 12px;
+    }
+
+
+    /* 按鈕資訊 */
+    .left .time {
+        font-size: 12px;
+    }
+
+    .left .time .sound_icon {
+        width: 20px;
+        margin-top: 5px;
+    }
+
+    .left .info_section .button_section .tomato_btn {
+        width: 45px;
+    }
+
+    .left .info_section .button_section .music_btn {
+        width: 45px;
+    }
+
+    .bottom_section {
+        position: relative;
+        margin-top: 0px;
+        height: 150px;
+    }
+
+  
+}
+
+
+@media(max-width: 320px) {
+    .middle_section {
+        flex: 3;
+    }
+
+    .middle_section h2 {
+        font-size: 20px;
+        -webkit-text-stroke: 1px #F95C3D;
+    }
+
+    .middle_section h1 {
+        font-size: 70px;
+        -webkit-text-stroke: 1.5px #F95C3D;
+    }
+
+    .left .info_section .button_section {
+        max-width: 300px;
+        width: 100%;
+    }
+
+
+}
