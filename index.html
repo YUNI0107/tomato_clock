@@ -6,9 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>蕃茄鐘 - Tomato clock</title>
+    <meta name="description" content="可以搭配喜歡音樂的小小音樂蕃茄鐘🍅🍅，體驗高效率工作法！">
+    <meta property="og:image" content="./images/og_img.png"/>
+
+    <!-- CDN或外連連結 -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="icon" href="./images/tomato.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"></script>
     <script async src="https://www.youtube.com/iframe_api"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
@@ -20,99 +25,104 @@
     <div id="app" class="container">
         <audio v-if="music !=='yt'&&  music !=='no'" :src="`music/${music}.mp3`" ref="music" loop></audio>
         <audio src="music/timeup.mp3" ref="timeup"></audio>
-            <div class="tomato_section" v-show="!start">
-                <div class="left">
-                    <div class="time">
-                        <p>{{year}}/{{month}}/{{day}}  {{text_now_hour}}:{{text_now_min}}</p>
-                        <div class="sound_icon" :class="{'no': nosound}" @click="noSound">
-                            <img class="w-100" src="./images/audio.png" alt="audio" title="開啟關閉音樂">
-                        </div>
-                        <div class="sound_icon reset" @click="resetTime">
-                            <img class="w-100" src="./images/reset.png" alt="audio" title="重新整理">
-                        </div>
+        <div class="tomato_section" v-show="!start">
+            <div class="left">
+                <div class="time">
+                    <p v-cloak>{{year}}/{{month}}/{{day}} {{text_now_hour}}:{{text_now_min}}</p>
+                    <div class="sound_icon" :class="{'no': nosound}" @click="noSound">
+                        <img class="w-100" src="./images/audio.png" alt="audio" title="開啟關閉音樂">
                     </div>
-                    <div class="music_section">
-                        <div class="yt_iframe" v-show="youtube">
-                            <div class="desktop_ty" id="player">
-                            </div>
-                        </div>
-                        <div class="normal_music" v-show="!youtube">
-                            <p>{{ music_type }}</p>
-                        </div>
-                    </div>
-                    <div class="info_section">
-                        <div class="button_section">
-                            <div class="btn" @click="modalContral('toma')" :class="{ 'no_select': info_type!== '' && info_type!== 'toma' }">
-                                <div class="tomato_btn">
-                                    <img class="w-100" src="./images/tomato_btn.png">
-                                </div>
-                                <p>什麼是蕃茄鐘</p>
-                            </div>
-                            <div class="btn" @click="modalContral('music')" :class="{ 'no_select': info_type!== '' && info_type!== 'music' }">
-                                <div class="music_btn">
-                                    <img class="w-100" src="./images/music_btn.png">
-                                </div>
-                                <p>更換音樂</p>
-                            </div>
-                        </div>
-                        <div class="info_modal" :class="info_type">
-                            <div class="close" @click="modalClose">
-                                <img class="w-100" src="./images/close.png">
-                            </div>
-                            <div class="text_modal">
-                                <h4>什麼是番茄鐘工作法？</h4>
-                                <p>「番茄鐘工作法」所開發的時間整理方法。意指二十五分鐘內，只專注在目前正在進行的事項，並用五分鐘時間專心休息，並再次以二十五分鐘為單位，專注於一件事情的方法。</p>
-                            </div>
-                            <div class="music_modal" :class="{'nonetime': playmusic}">
-                                <p>{{ music_select_text }}</p>
-                                <button class="main_btn" @click="changeMusic('happy')" :class="{'no_select': music !== 'happy'}">青春洋溢</button>
-                                <button class="main_btn" @click="changeMusic('peace')" :class="{'no_select': music !== 'peace'}">平靜思緒</button>
-                                <button class="main_btn yt_btn" :class="{'no_select': music !== 'yt'}" @click="cangeToYT">
-                                    <div class="yt_img">
-                                        <img class="w-100" src="./images/yt.png">
-                                    </div>
-                                    <input placeholder="請輸入網址" type="text" v-model.trim="yt_address">
-                                </button>
-                                <button class="close_music_btn" @click="changeMusic('no')">
-                                    <div class="close_music">
-                                        <img class="w-100" src="./images/close.png" alt="">
-                                    </div>
-                                    <p>我不用任何音樂</p>
-                                </button>
-                            </div>
-                        </div>
+                    <div class="sound_icon reset" @click="resetTime">
+                        <img class="w-100" src="./images/reset.png" alt="audio" title="重新整理">
                     </div>
                 </div>
-                <div class="middle_section">
-                    <div class="clock_img">
-                        <div class="toggle" @click="toggleTime">
-                            <img src="./images/pause.png" alt="pause" class="pause" v-show="playmusic">
-                            <img src="./images/play.png" alt="play" class="play" v-show="!playmusic">
+                <div class="music_section">
+                    <div class="yt_iframe" v-show="youtube">
+                        <div class="desktop_ty" id="player">
                         </div>
-                        <img class="w-100" src="./images/tomato.png">
                     </div>
-                    <h2>TOMATO CLOCK</h2>
-                    <h1 v-cloak>{{min}}:{{sec}}</h1>
-                    <div class="progress_bar">
-                        <div class="bar">
-                            <div class="progress" :style="{width: bar_length + '%'}"></div>
-                        </div>
-                        <div class="tip_text">
-                            <div class="gogo_text">
-                                <p>{{gogo_text}}</p>
+                    <div class="normal_music" v-show="!youtube">
+                        <p>{{ music_type }}</p>
+                    </div>
+                </div>
+                <div class="info_section">
+                    <div class="button_section">
+                        <div class="btn" @click="modalContral('toma')"
+                            :class="{ 'no_select': info_type!== '' && info_type!== 'toma' }">
+                            <div class="tomato_btn">
+                                <img class="w-100" src="./images/tomato_btn.png">
                             </div>
-                            <p>0%</p>
-                            <p>100%</p>
+                            <p>什麼是蕃茄鐘</p>
+                        </div>
+                        <div class="btn" @click="modalContral('music')"
+                            :class="{ 'no_select': info_type!== '' && info_type!== 'music' }">
+                            <div class="music_btn">
+                                <img class="w-100" src="./images/music_btn.png">
+                            </div>
+                            <p>更換音樂</p>
+                        </div>
+                    </div>
+                    <div class="info_modal" :class="info_type">
+                        <div class="close" @click="modalClose">
+                            <img class="w-100" src="./images/close.png">
+                        </div>
+                        <div class="text_modal">
+                            <h4>什麼是番茄鐘工作法？</h4>
+                            <p>「番茄鐘工作法」所開發的時間整理方法。會不斷重複「25分鐘工作+5分鐘小休息」的輪迴，直到第 4 次番茄鐘響時，請好好來個 30 分鐘的大休息。</p>
+                        </div>
+                        <div class="music_modal" :class="{'nonetime': playmusic}">
+                            <p>{{ music_select_text }}</p>
+                            <button class="main_btn" @click="changeMusic('happy')"
+                                :class="{'no_select': music !== 'happy'}">青春洋溢</button>
+                            <button class="main_btn" @click="changeMusic('peace')"
+                                :class="{'no_select': music !== 'peace'}">平靜思緒</button>
+                            <button class="main_btn yt_btn" :class="{'no_select': music !== 'yt'}" @click="cangeToYT">
+                                <div class="yt_img">
+                                    <img class="w-100" src="./images/yt.png">
+                                </div>
+                                <input placeholder="請輸入網址" type="text" v-model.trim="yt_address">
+                            </button>
+                            <button class="close_music_btn" @click="changeMusic('no')">
+                                <div class="close_music">
+                                    <img class="w-100" src="./images/close.png" alt="">
+                                </div>
+                                <p>我不用任何音樂</p>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="bottom_section" v-show="!start" id="gameDiv" ref="gameDiv">
-              
+            <div class="middle_section">
+                <div class="clock_img">
+                    <div class="toggle" @click="toggleTime">
+                        <img src="./images/pause.png" alt="pause" class="pause" v-show="playmusic">
+                        <img src="./images/play.png" alt="play" class="play" v-show="!playmusic">
+                    </div>
+                    <img class="w-100" src="./images/tomato.png">
+                </div>
+                <h2>TOMATO CLOCK</h2>
+                <h1 v-cloak>{{min}}:{{sec}}</h1>
+                <div class="progress_bar">
+                    <div class="bar">
+                        <div class="progress" :style="{width: bar_length + '%'}"></div>
+                    </div>
+                    <div class="tip_text">
+                        <div class="gogo_text">
+                            <p>{{gogo_text}}</p>
+                        </div>
+                        <p>0%</p>
+                        <p>100%</p>
+                    </div>
+                </div>
             </div>
-            <transition name="start" mode="out-in">
-                <start_part @leave-start-page="leaveStartPage" @emit-address="emitAddress" v-if="start" key="start" :ready_yt="ready_yt"></start_part>
-            </transition>
+        </div>
+        <div class="bottom_section" v-show="!start" id="gameDiv" ref="gameDiv">
+
+        </div>
+        <transition name="start" mode="out-in">
+            <start_part @leave-start-page="leaveStartPage" @emit-address="emitAddress" v-if="start" key="start"
+                :ready_yt="ready_yt"></start_part>
+        </transition>
     </div>
     <script src="./main.js"></script>
 </body>

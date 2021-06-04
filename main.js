@@ -1,3 +1,5 @@
+PIXI.utils.skipHello();
+
 Vue.component("start_part", {
     props: ['ready_yt'],
     data() {
@@ -27,7 +29,7 @@ Vue.component("start_part", {
             <p>選擇你期望的工作狀態，播放對應的音樂</p>
         </div>
         <div class="button_section">
-            <button class="main_btn" @click="leaveStartPage('happy')">熱情洋溢</button>
+            <button class="main_btn" @click="leaveStartPage('happy')">青春洋溢</button>
             <button class="main_btn" @click="leaveStartPage('peace')">平靜思緒</button>
             <button class="main_btn yt_btn">
                 <p>Youtube</p>
@@ -122,7 +124,7 @@ let vm = new Vue({
         },
         gogo_text() {
             if (this.total_time == 1500) {
-                return "讓我們開始蕃茄中工作法吧！"
+                return "讓我們開始蕃茄鐘工作法吧！"
             }
 
             if (this.bar_length < 25) {
@@ -138,8 +140,17 @@ let vm = new Vue({
             }
         },
         turn_link() {
-            let index = this.yt_address.indexOf('v=')
-            let link_id = this.yt_address.slice(index + 2)
+            let index_1 = this.yt_address.indexOf('v=')
+            let index_2 = this.yt_address.indexOf('be/')
+            let link_id;
+            if( index_1 !== -1){
+                link_id = this.yt_address.slice(index_1 + 2)
+            }else if( index_2 !== -1 ){
+                link_id = this.yt_address.slice(index_1 + 3)
+            }else{
+                link_id = "FWU_OD6TCrM&t=5185s"
+            }
+
             return link_id
         },
         text_now_hour() {
@@ -168,7 +179,6 @@ let vm = new Vue({
             if (this.yt_address.length < 10) {
                 this.youtube = false;
             } else if (this.music == "yt" && this.ready_yt) {
-                console.log('load');
                 this.youtube = true;
                 this.player.loadVideoById(this.turn_link);
                 this.stopYT();
@@ -321,12 +331,10 @@ let vm = new Vue({
             this.app.ticker.remove(this.gameLoop)
             this.app.stage.removeChildren()
             if (size == "big") {
-                console.log('b');
                 this.bgBack = this.createBg(this.app.loader.resources["bgBack"].texture, [2500, 186, 80]);
                 this.bgMiddle = this.createBg(this.app.loader.resources["bgMiddle"].texture, [2500, 186, 80]);
                 this.bgFront = this.createBg(this.app.loader.resources["bgFront"].texture, [2500, 186, 80]);
             } else {
-                console.log('s');
                 this.bgBack = this.createBg(this.app.loader.resources["sm_bgBack"].texture, [1800, 186, 25]);
                 this.bgMiddle = this.createBg(this.app.loader.resources["sm_bgMiddle"].texture, [1800, 134, 25]);
                 this.bgFront = this.createBg(this.app.loader.resources["sm_bgFront"].texture, [1800, 134, 25]);
@@ -366,7 +374,6 @@ let vm = new Vue({
     },
     mounted() {
         onYouTubeIframeAPIReady = () => {
-            console.log("onYouTubeIframeAPIReady");
             this.initYoutube();
         };
 
@@ -409,3 +416,6 @@ let vm = new Vue({
         this.app.destroy(true)
     },
 })
+
+console.log("🍅🍅🍅🍅🍅🍅 \n \n%cTOMATO MUSIC CLOCK \n%cMaybe I will improve this small project someday  \n \n🍅🍅🍅🍅🍅🍅","color:#F95C3D;font-weight: bold;","color: auto;font-weight: normal;");
+

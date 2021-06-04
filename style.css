@@ -45,6 +45,8 @@ body {
     color: #333;
     letter-spacing: 1px;
     margin-right: 10px;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .left .time .sound_icon {
@@ -74,7 +76,7 @@ body {
 .left .normal_music p {
     font-weight: bolder;
     letter-spacing: 1px;
-    font-size: 20px;
+    font-size: 18px;
     color: #555;
     margin-bottom: 30px;
 }
@@ -307,7 +309,7 @@ body {
 
 .middle_section .clock_img {
     position: relative;
-    width: 180px;
+    width: 150px;
     animation: tomato_ani .5s  backwards;
 }
 
@@ -328,8 +330,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -30%);
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     border: solid 8px #fff;
     padding: 10px;
@@ -351,8 +353,8 @@ body {
 .middle_section h2 {
     font-family: 'Roboto', sans-serif;
     color: transparent;
-    -webkit-text-stroke: 2.5px #F95C3D;
-    font-size: 55px;
+    -webkit-text-stroke: 2px #F95C3D;
+    font-size: 40px;
     margin-top: 5px;
 }
 
@@ -360,16 +362,16 @@ body {
     font-family: 'Roboto', sans-serif;
     color: #FFCEC4;
     -webkit-text-stroke: 2.5px #F95C3D;
-    font-size: 230px;
+    font-size: 180px;
     letter-spacing: 10px;
     font-weight: bolder;
 }
 
 .middle_section .progress_bar .bar {
     position: relative;
-    max-width: 900px;
+    max-width: 800px;
     width: 80vw;
-    height: 15px;
+    height: 10px;
     background-color: #fff;
     border: solid 1px #707070;
     border-radius: 10px;
@@ -377,7 +379,7 @@ body {
 }
 
 .middle_section .progress_bar .bar .progress {
-    height: 15px;
+    height: 10px;
     background-color: #F95C3D;
     position: absolute;
     left: 0;
@@ -388,7 +390,9 @@ body {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+    font-size: 14px;
     font-weight: bolder;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .middle_section .progress_bar .gogo_text {
@@ -457,6 +461,7 @@ body {
     margin: 10px 0;
     font-size: 18px;
     box-shadow: 0px 2px 5px rgba(67, 67, 67, 0.3);
+    font-size: 15px;
     cursor: pointer;
 }
 
@@ -472,6 +477,7 @@ body {
     display: flex;
     align-items: center;
     cursor: auto;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .start_part .button_section .yt_btn p{
