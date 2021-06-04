@@ -93,10 +93,10 @@ let vm = new Vue({
             return this.music == "happy" ? "青春洋溢 的音樂" : this.music == "peace" ? "平靜思緒 的音樂" : this.music == "yt" ? "請輸入正確的YouTube網址" : "無使用音樂"
         },
         music_select_text() {
-            if (this.playmusic) {
-                return "音樂播放中，無法修改音樂"
-            } else {
+            if (!this.playmusic || this.music == 'no') {
                 return "選擇你的工作狀態，播放對應的音樂"
+            } else {
+                return "音樂播放中，無法修改音樂"
             }
         },
         min() {
@@ -286,6 +286,10 @@ let vm = new Vue({
         },
         changeMusic(tag) {
             if (this.music == 'yt') this.youtube = false;
+            if(tag == 'no'){
+                this.stopYT();
+                this.musicPause();
+            }
             this.music = tag;
         },
         cangeToYT() {

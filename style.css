@@ -216,7 +216,7 @@ body {
     width: 100%;
 }
 
-.left .info_modal.music .music_modal.nonetime .main_btn{
+.left .info_modal.music .music_modal.nonetime .main_btn, .left .info_modal.music .music_modal.nonetime .close_music_btn{
     pointer-events: none;
     filter: grayscale(1) brightness(0.9);
 }
