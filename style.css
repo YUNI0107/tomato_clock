@@ -118,11 +118,11 @@ body {
 }
 
 .left .info_section .button_section .tomato_btn {
-    width: 60px;
+    width: 50px;
 }
 
 .left .info_section .button_section .music_btn {
-    width: 70px;
+    width: 60px;
 }
 
 .left .info_modal {
@@ -133,7 +133,8 @@ body {
     padding: 20px 30px;
     border-radius: 10px;
     width: 400px;
-    min-height: 100%;
+    height: auto;
+    min-height: 80%;
     box-shadow: 2px 2px 3px rgba(131, 131, 131, 0.3);
     z-index: 10;
     display: flex;
@@ -197,12 +198,13 @@ body {
 }
 
 .text_modal h4 {
-    font-size: 20px;
+    font-size: 18px;
     color: #F95C3D;
     margin-bottom: 5px;
 }
 
 .text_modal p {
+    font-size: 14px;
     line-height: 30px;
     color: #555;
 }

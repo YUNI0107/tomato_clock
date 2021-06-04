@@ -146,7 +146,7 @@ let vm = new Vue({
             if( index_1 !== -1){
                 link_id = this.yt_address.slice(index_1 + 2)
             }else if( index_2 !== -1 ){
-                link_id = this.yt_address.slice(index_1 + 3)
+                link_id = this.yt_address.slice(index_2 + 3)
             }else{
                 link_id = "FWU_OD6TCrM&t=5185s"
             }
