@@ -21,11 +21,11 @@
 </head>
 
 <body>
-    <div id="app" class="container">
+    <div id="app" class="container" >
         <audio v-if="music !=='yt'&&  music !=='no'" :src="`music/${music}.mp3`" ref="music" loop></audio>
         <audio src="music/timeup.mp3" ref="timeup"></audio>
-        <div class="tomato_section" v-show="!start">
-            <div class="left">
+        <div class="tomato_section" v-show="!start" :class="`time_${time_state}`">
+            <div class="left" :class="`time_${time_state}`">
                 <div class="time">
                     <p v-cloak>{{year}}/{{month}}/{{day}} {{text_now_hour}}:{{text_now_min}}</p>
                     <div class="sound_icon" :class="{'no': nosound}" @click="noSound">
@@ -90,14 +90,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="state_section">
+                    <button @click="changeTimeState(25)">25mins<span><br/></span>工作</button>
+                    <button @click="changeTimeState(5)">5mins<span><br/></span>小休息</button>
+                    <button @click="changeTimeState(30)">30mins<span><br/></span>大休息</button>
+                </div>
             </div>
-            <div class="middle_section">
+            <div class="middle_section" :class="`time_${time_state}`">
                 <div class="clock_img">
                     <div class="toggle" @click="toggleTime">
                         <img src="./images/pause.png" alt="pause" class="pause" v-show="playmusic">
                         <img src="./images/play.png" alt="play" class="play" v-show="!playmusic">
                     </div>
-                    <img class="w-100" src="./images/tomato.png">
+                    <img v-show="time_state == 25" class="w-100" src="./images/tomato.png">
+                    <img class="w-100" v-show="time_state == 5 || time_state == 30" src="./images/tomato_sleep.png">
                 </div>
                 <h2>TOMATO CLOCK</h2>
                 <h1 v-cloak>{{min}}:{{sec}}</h1>
@@ -115,7 +121,7 @@
                 </div>
             </div>
         </div>
-        <div class="bottom_section" v-show="!start" id="gameDiv" ref="gameDiv">
+        <div class="bottom_section" v-show="!start" id="gameDiv" ref="gameDiv" :class="`time_${time_state}`">
 
         </div>
         <transition name="start" mode="out-in">

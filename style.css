@@ -25,6 +25,7 @@ body {
     overflow: hidden;
 }
 
+
 /* 最右邊 */
 .left {
     position: absolute;
@@ -32,13 +33,15 @@ body {
     left: 30px;
     transform: translateY(-50%);
     z-index: 10;
-    margin-top: -100px;
+    margin-top: -50px;
 }
+
 
 .left .time {
     display: flex;
     align-items: center;
 }
+
 
 .left .time p {
     font-weight: bold;
@@ -48,6 +51,8 @@ body {
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
 }
+
+
 
 .left .time .sound_icon {
     position: relative;
@@ -81,6 +86,7 @@ body {
     margin-bottom: 30px;
 }
 
+
 .left .info_section {
     position: relative;
     padding: 10px 10px;
@@ -92,6 +98,7 @@ body {
     position: relative;
 }
 
+
 .left .info_section .button_section .btn {
     display: flex;
     justify-content: center;
@@ -100,6 +107,7 @@ body {
     font-size: 14px;
     cursor: pointer;
 }
+
 
 .left .info_section .button_section .btn.no_select{
     filter: grayscale(1) opacity(0.5);
@@ -297,6 +305,40 @@ body {
 }
 
 
+.left .state_section{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.left .state_section button{
+    margin: 5px 0;
+    border-radius: 50px;
+    border: none;
+    padding: 5px 10px;
+    max-width: 120px;
+    width: 100%;
+    color: #fff;
+    cursor: pointer;
+    line-height: 20px;
+}
+
+.left .state_section button span{
+    display: none;
+}
+
+.left .state_section button:nth-child(1){
+    background-color: #F95C3D;
+}
+
+.left .state_section button:nth-child(2){
+    background-color: #5662a7;
+}
+
+.left .state_section button:nth-child(3){
+    background-color: #3d477d;
+}
+
 /* 正中間主體 */
 .middle_section {
     flex: 1;
@@ -360,6 +402,10 @@ body {
     margin-top: 5px;
 }
 
+.middle_section.time_5 h2, .middle_section.time_30 h2{
+    -webkit-text-stroke: 2px #5662a7;
+}
+
 .middle_section h1 {
     font-family: 'Roboto', sans-serif;
     color: #FFCEC4;
@@ -369,10 +415,15 @@ body {
     font-weight: bolder;
 }
 
+.middle_section.time_5 h1, .middle_section.time_30 h1{
+    color: #a6add8;
+    -webkit-text-stroke: 2.5px #5662a7;
+}
+
 .middle_section .progress_bar .bar {
     position: relative;
     max-width: 800px;
-    width: 80vw;
+    width: 65vw;
     height: 10px;
     background-color: #fff;
     border: solid 1px #707070;
@@ -387,6 +438,10 @@ body {
     left: 0;
 }
 
+.middle_section.time_5 .progress_bar .bar .progress, .middle_section.time_30 .progress_bar .bar .progress {
+    background-color: #5662a7;
+}
+
 .middle_section .progress_bar .tip_text {
     width: 100%;
     display: flex;
@@ -396,6 +451,7 @@ body {
     font-weight: bolder;
     font-family: 'Open Sans', sans-serif;
 }
+
 
 .middle_section .progress_bar .gogo_text {
     position: absolute;
@@ -415,6 +471,7 @@ body {
     height: 250px;
     overflow: hidden;
 }
+
 
 
 

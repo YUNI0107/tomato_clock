@@ -60,13 +60,15 @@ let vm = new Vue({
     el: "#app",
     data() {
         return {
-            start: true,
+            start: false,
             playmusic: false,
             playing: false,
             info_type: "",
             music: "happy",
             timer: null,
             total_time: 60 * 25,
+            time_state: 25,
+            // youtube
             yt_address: "",
             player: null,
             youtube: false,
@@ -120,23 +122,26 @@ let vm = new Vue({
             }
         },
         bar_length() {
-            return (1500 - this.total_time) / 15
+            return ((60 * this.time_state) - this.total_time) / ((60 * this.time_state) / 100)
         },
         gogo_text() {
-            if (this.total_time == 1500) {
-                return "讓我們開始蕃茄鐘工作法吧！"
-            }
-
-            if (this.bar_length < 25) {
-                return "加油！正要開始努力！"
-            } else if (this.bar_length < 50) {
-                return "沒有激流就稱不上勇進！"
-            } else if (this.bar_length < 75) {
-                return "超過50%了！再繼續邁進。"
-            } else if (this.bar_length < 100) {
-                return "再堅持一下，你就要完成了。"
-            } else if (this.bar_length == 100) {
-                return "恭喜你，休息5分鐘後再繼續吧！"
+            if(this.time_state == 25){
+                if (this.total_time == 1500) {
+                    return "讓我們開始蕃茄鐘工作法吧！"
+                }
+                if (this.bar_length < 25) {
+                    return "加油！正要開始努力！"
+                } else if (this.bar_length < 50) {
+                    return "沒有激流就稱不上勇進！"
+                } else if (this.bar_length < 75) {
+                    return "超過50%了！再繼續邁進。"
+                } else if (this.bar_length < 100) {
+                    return "再堅持一下，你就要完成了。"
+                } else if (this.bar_length == 100) {
+                    return "恭喜你，休息5分鐘後再繼續吧！"
+                }
+            }else{
+                return "休息一下再繼續吧。"
             }
         },
         turn_link() {
@@ -172,7 +177,7 @@ let vm = new Vue({
                 this.playing = false;
                 this.musicPause();
                 this.$refs.timeup.play();
-                if (this.music !== "yt") this.$refs.music.currentTime = 0;
+                if (this.music !== "yt" && this.music !== "no") this.$refs.music.currentTime = 0;
             }
         },
         yt_address() {
@@ -207,7 +212,7 @@ let vm = new Vue({
         toggleTime() {
             clearInterval(this.timer);
             if (this.total_time <= 0) {
-                this.total_time = 60 * 25;
+                this.total_time = 60 * this.time_state;
                 this.playmusic = true;
                 this.countTimeStart();
                 this.musicPlay();
@@ -237,16 +242,20 @@ let vm = new Vue({
             }, 1000)
             return
         },
+        changeTimeState(num){
+            this.time_state = parseInt(num);
+            this.resetTime();
+        },
         resetTime() {
             clearInterval(this.timer);
-            this.total_time = 60 * 25;
+            this.total_time = 60 * this.time_state;
             this.playmusic = false;
             this.playing = false;
             this.musicPause();
             this.backRender("pause")
-            if (this.music !== "yt") {
+            if (this.music !== "yt" && this.music!=="no") {
                 this.$refs.music.currentTime = 0;
-            } else {
+            } else if(this.music == "yt"){
                 this.resetYT();
             }
         },
@@ -412,7 +421,7 @@ let vm = new Vue({
         this.app.loader.load();
 
 
-        let mql = window.matchMedia('(max-width: 600px)');
+        let mql = window.matchMedia('(max-width: 576px)');
         mql.addEventListener('change', this.textureRender);
 
     },
