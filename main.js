@@ -424,6 +424,9 @@ let vm = new Vue({
         let mql = window.matchMedia('(max-width: 576px)');
         mql.addEventListener('change', this.textureRender);
 
+        // 避免start還沒跑完 主畫面就顯示
+        this.$refs.tomato_section.style.opacity = 1;
+
     },
     destroyed() {
         this.app.destroy(true)

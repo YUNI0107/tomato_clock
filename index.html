@@ -24,7 +24,7 @@
     <div id="app" class="container" >
         <audio v-if="music !=='yt'&&  music !=='no'" :src="`music/${music}.mp3`" ref="music" loop></audio>
         <audio src="music/timeup.mp3" ref="timeup"></audio>
-        <div class="tomato_section" v-show="!start" :class="`time_${time_state}`">
+        <div class="tomato_section" v-show="!start" :class="`time_${time_state}`" ref="tomato_section">
             <div class="left" :class="`time_${time_state}`">
                 <div class="time">
                     <p v-cloak>{{year}}/{{month}}/{{day}} {{text_now_hour}}:{{text_now_min}}</p>
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="normal_music" v-show="!youtube">
-                        <p>{{ music_type }}</p>
+                        <p v-cloak>{{ music_type }}</p>
                     </div>
                 </div>
                 <div class="info_section">
@@ -98,7 +98,7 @@
             </div>
             <div class="middle_section" :class="`time_${time_state}`">
                 <div class="clock_img">
-                    <div class="toggle" @click="toggleTime">
+                    <div class="toggle" @click="toggleTime" v-if="!start" v-cloak>
                         <img src="./images/pause.png" alt="pause" class="pause" v-show="playmusic">
                         <img src="./images/play.png" alt="play" class="play" v-show="!playmusic">
                     </div>
@@ -113,7 +113,7 @@
                     </div>
                     <div class="tip_text">
                         <div class="gogo_text">
-                            <p>{{gogo_text}}</p>
+                            <p v-cloak>{{gogo_text}}</p>
                         </div>
                         <p>0%</p>
                         <p>100%</p>
