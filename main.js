@@ -60,7 +60,7 @@ let vm = new Vue({
     el: "#app",
     data() {
         return {
-            start: false,
+            start: true,
             playmusic: false,
             playing: false,
             info_type: "",
